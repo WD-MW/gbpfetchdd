@@ -1,17 +1,13 @@
-from flask import Flask, request, jsonify
+from flask import Flask, send_file, Response
 import requests
+import base64
+import io
 
 app = Flask(__name__)
-
-@app.route("/")
-def home():
-    return "Vercel Flask API is live."
 
 @app.route("/generate", methods=["POST"])
 def generate_pdf():
     try:
-        print("📤 Sending request to Browserless...")
-
         url = "https://production-sfo.browserless.io/chromium/bql?token=SAho7NBFdqUTAn97462feca6224d92059ff2e5b643&humanlike=true&blockConsentModals=true"
 
         payload = {
@@ -37,20 +33,20 @@ def generate_pdf():
             "variables": {}
         }
 
-        r = requests.post(url, json=payload)
-        print("📥 Response status:", r.status_code)
-        print("📄 Raw response text:", r.text[:300])
+        response = requests.post(url, json=payload)
+        response.raise_for_status()
+        base64_pdf = response.json().get("data", {}).get("capturePDF", {}).get("base64")
 
-        r.raise_for_status()
+        if not base64_pdf:
+            return Response("No PDF returned", status=500)
 
-        data = r.json()
-        base64 = data.get("data", {}).get("capturePDF", {}).get("base64")
-
-        if not base64:
-            return jsonify({"error": "No base64 PDF returned"}), 500
-
-        return jsonify({"base64": base64})
+        pdf_bytes = base64.b64decode(base64_pdf)
+        return send_file(
+            io.BytesIO(pdf_bytes),
+            mimetype="application/pdf",
+            as_attachment=True,
+            download_name="dashboard.pdf"
+        )
 
     except Exception as e:
-        print("❌ Error:", str(e))
-        return jsonify({"error": str(e)}), 500
+        return Response(f"Error: {str(e)}", status=500)
