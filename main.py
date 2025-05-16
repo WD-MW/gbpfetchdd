@@ -27,7 +27,14 @@ def generate_pdf():
                 waitUntil: networkIdle
               ) { status time }
               wait20Seconds: waitForTimeout(time: 20000) { time }
-              capturePDF: pdf(format: a4, landscape: false, printBackground: true) { base64 }
+              capturePDF: pdf(
+                format: a4,
+                landscape: false,
+                printBackground: false,
+                scale: 0.75
+              ) {
+                base64
+              }
             }""",
             "operationName": "CaptureDashboardData",
             "variables": {}
