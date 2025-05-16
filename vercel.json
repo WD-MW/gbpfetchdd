@@ -1,0 +1,10 @@
+{
+    "builds": [
+      { "src": "main.py", "use": "@vercel/python" }
+    ],
+    "routes": [
+      { "src": "/generate", "methods": ["POST"], "dest": "main.py" },
+      { "src": "/", "methods": ["GET"], "dest": "main.py" }
+    ]
+  }
+  
