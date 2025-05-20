@@ -17,10 +17,10 @@ def generate_pdf():
                 type: [document, xhr]
               ) { time }
               setCookies: cookies(cookies: [
-                { name: "_www_session", value: "62448b2577902ca1dd0bed3f93b7fbcb", domain: "admin.admin-gobetplay.com", path: "/", httpOnly: true, secure: false },
-                { name: "ahoy_visit", value: "dedd406d-09d7-4449-a31c-132aa3752f11", domain: "admin.admin-gobetplay.com", path: "/" },
-                { name: "ahoy_visitor", value: "5b8f9ef1-ebe3-4a6f-9a4d-169073ea82ff", domain: "admin.admin-gobetplay.com", path: "/" },
-                { name: "cable_token", value: "62448b2577902ca1dd0bed3f93b7fbcb", domain: "admin.admin-gobetplay.com", path: "/" }
+                { name: "_www_session", value: "48b51300ee5d92ec41bbcde90f2735df", domain: "admin.admin-gobetplay.com", path: "/", httpOnly: true, secure: false },
+                { name: "ahoy_visit", value: "6d066fda-8dad-4451-881c-6331495905e9", domain: "admin.admin-gobetplay.com", path: "/" },
+                { name: "ahoy_visitor", value: "db758ba8-4dc0-46a5-87e7-6633d6199088", domain: "admin.admin-gobetplay.com", path: "/" },
+                { name: "cable_token", value: "48b51300ee5d92ec41bbcde90f2735df", domain: "admin.admin-gobetplay.com", path: "/" }
               ]) { time }
               goToDashboard: goto(
                 url: "https://admin.admin-gobetplay.com/data_overviews?user_type=normal&period_time=today",
