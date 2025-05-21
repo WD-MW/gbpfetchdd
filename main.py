@@ -18,7 +18,7 @@ def generate_pdf():
               ) { time }
               setCookies: cookies(cookies: [
                 { name: "_www_session", value: "48b51300ee5d92ec41bbcde90f2735df", domain: "admin.admin-gobetplay.com", path: "/", httpOnly: true, secure: false },
-                { name: "ahoy_visit", value: "6d066fda-8dad-4451-881c-6331495905e9", domain: "admin.admin-gobetplay.com", path: "/" },
+                { name: "ahoy_visit", value: "41e277cc-c0b3-4e2f-80d1-4f7b7f152985", domain: "admin.admin-gobetplay.com", path: "/" },
                 { name: "ahoy_visitor", value: "db758ba8-4dc0-46a5-87e7-6633d6199088", domain: "admin.admin-gobetplay.com", path: "/" },
                 { name: "cable_token", value: "48b51300ee5d92ec41bbcde90f2735df", domain: "admin.admin-gobetplay.com", path: "/" }
               ]) { time }
